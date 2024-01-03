@@ -67,15 +67,19 @@ function getStores() {
 
 function getDeals(stores) {
     let searchDeals;
-    if(stores == '') { searchDeals = apiDeal + '?storeID=' + stores; }
+    console.log("Get Deals:", stores)
+    if(stores != '') { searchDeals = apiDeal + '?storeID=' + stores; }
     else { searchDeals = apiDeal; }
+
+    console.log('Getting Deals from:', searchDeals);
 
     var jqxhr = $.get(searchDeals, function() {
         console.log("getDeals:", "Success.")
       })
         .done(function(data) {
-            // console.log("Data:", data);
+            console.log("Data:", data);
 
+            storeDeals.html('');
             //This is where the data is handled
             for(const key in data) { //Loops through each key in data array
                 let salePrice = '<mark>' + data[key].salePrice + '</mark>'
@@ -114,10 +118,8 @@ function handleFormDeals(event) {
 
     let strValues = values.toString();
     if(strValues == '') { console.log("nothing selected"); }
-    console.log(strValues);
 
     getDeals(strValues);
-
 }
 
 
