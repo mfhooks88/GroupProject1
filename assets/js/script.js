@@ -4,19 +4,21 @@
 
     // Define some elements for testing
         const storeList = $('body');
+        const storeForm = $('#store-select');
+        const storeDeals = $('#store-deals');
+
+    // Default variables needed in fetch
+    const baseURL = 'https://www.cheapshark.com'
+    const apiStores = baseURL + '/api/1.0/stores';
+    const apiDeal = baseURL + '/api/1.0/deals'
 
 function getStores() {
     // https://www.cheapshark.com/api/1.0/stores
     // Returns a full list of store IDs, names, and a flag specifying if store is active.
     // Response also includes an collection of banner / logo / icon image URLs for each store.
 
-    // Default variables needed in fetch
-    const baseURL = 'https://www.cheapshark.com'
-    const apiCall = baseURL + '/api/1.0/stores';
-    const apiDeals = baseURL + '/api/1.0/deals'
-    
-    var jqxhr = $.get(apiCall, function() {
-        console.log("Fetch:", "Success.")
+    var jqxhr = $.get(apiStores, function() {
+        console.log("getStores:", "Success.")
       })
         .done(function(data) {
             console.log("Data:", data);
@@ -30,12 +32,16 @@ function getStores() {
                 // Usage: storeImage.banner, storeImage.icon, storeImage.logo
                 let storeImage = data[key].images;
 
-                console.log()
-                storeList.append('<p><a name="store" href="' + apiDeals + "?storeID=" + storeID + '">' +
-                storeName + '</a>' + '<img name="image" src="' + baseURL + storeImage.banner + '"></p>');
+                // storeList.append('<p><a name="store" href="' + apiDeal + "?storeID=" + storeID + '">' +
+                // storeName + '</a>' + '<img name="image" src="' + baseURL + storeImage.banner + '"></p>');
                 
+                let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" />'
+                let label = '<label for="' + storeID + '">' + storeName + '</label>'
+
+                storeForm.append('<div name="form-group">' + checkBox + label + "</div>");
+
                 if(storeActive == 1) { // if active is 1 (true), set class to active for styling
-                    $('a[name="store"]').addClass("active");
+                    $('label[for="' + storeID + '"]').addClass("active");
                 }
                 
             }
@@ -43,7 +49,7 @@ function getStores() {
         })
 
         .fail(function() {
-          console.log("Fetch Error:", "")
+          console.log("getStores:", "Failed.")
         })
         .always(function() {
           
@@ -55,8 +61,63 @@ function getStores() {
 
       // Set another completion function for the request above
       jqxhr.always(function() {
-        console.log("Fetch:", "Completed.")
+        console.log("getStores:", "Completed.")
       });
+}
+
+function getDeals(stores) {
+    let searchDeals;
+    if(stores == '') { searchDeals = apiDeal + '?storeID=' + stores; }
+    else { searchDeals = apiDeal; }
+
+    var jqxhr = $.get(searchDeals, function() {
+        console.log("getDeals:", "Success.")
+      })
+        .done(function(data) {
+            // console.log("Data:", data);
+
+            //This is where the data is handled
+            for(const key in data) { //Loops through each key in data array
+                let salePrice = '<mark>' + data[key].salePrice + '</mark>'
+                let normalPrice = '<span style="text-decoration: line-through;">' + data[key].normalPrice + '</span>'
+                let saleInfo = normalPrice + " is now " + salePrice;
+                storeDeals.append('<p>' + data[key].title + '<br/>' + saleInfo + '</p>');
+            }
+          
+        })
+
+        .fail(function() {
+          console.log("getDeals:", "Failed.")
+        })
+        .always(function() {
+          
+        });
+       
+      // Perform other work here
+       
+      // Set another completion function for the request above
+      jqxhr.always(function() {
+        console.log("getDeals:", "Completed.")
+      });
+}
+
+function handleFormDeals(event) {
+    event.preventDefault();
+
+    var values = [];
+    $("#store-select :input").each(function() {
+       //values[this.id] = $(this).is(":checked");
+       if($(this).is(":checked")) {
+        values.push($(this).val());
+       }
+    });
+
+    let strValues = values.toString();
+    if(strValues == '') { console.log("nothing selected"); }
+    console.log(strValues);
+
+    getDeals(strValues);
+
 }
 
 
@@ -64,6 +125,6 @@ function getStores() {
 $(function() {
     //Calls getStores on load for testing display of stores
     getStores();
+
+    storeForm.submit(handleFormDeals);
 });
-
-

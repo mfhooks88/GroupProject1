@@ -4,11 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(auto-fill, auto);
+            grid-row-gap: .5em;
+        }
+
+        .grid-button {
+            grid-column: 1 / 4;
+        }
+    </style>
 </head>
 
-<body>
-    
+<body style="display: flex; flex-direction: row; justify-content: space-evenly;">
+    <section style="border: 1px solid black; padding: .5rem;">
+        <form id="store-select" name="store-select" class="grid">
+            <!-- Store Checkbox Generated Here -->
+            <button class="grid-button">Check Deals</button>
+        </form>
+    </section>
 
+    <section id="store-deals" style="border: 1px solid black; padding: .5rem;">
+        <!-- Store Deals Generated Here -->
+
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
