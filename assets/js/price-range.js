@@ -100,6 +100,8 @@ function handlePriceRangeForm(event) {
     getPriceDeals('', priceMin, priceMax);
 }
 
+
+//Handle waiting for page load
 $( function() {
     
     makeSlider();
