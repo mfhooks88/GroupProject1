@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch List Demo</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+        }
+
+        section {
+            flex: 1 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <section id="search-params" style="margin: 1rem;">
+        <form id="price-range-form">
+            <div id="price-range-slider" style="width: 200px">
+            </div>
+
+            <div style="margin-top: 1rem;">Min Price is: <span id="price-min"></span></div>
+            <div>Max Price is: <span id="price-max"></span></div>
+            
+            <button style="margin-top: 1rem;" id="price-range-search">Check Deals!</button>
+        </form>
+    </section>
+    
+    <section id="display-results">
+        <!-- Games in Price Range Generated Here -->
+        
+    </section>
+
+    
+    <section>
+    <h1>↓ Watch List Below ↓</h1>
+        <form>
+            <button id="watch-refresh">Refresh Watch List</button>
+        </form>
+        
+        <div id="watch-list">
+        <!-- Local Storage | Games Saved to Watch -->
+        </div>
+    </section>
+
+    <!-- Javascript Files Needed -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>   
+    <script src="read_write-localstorage.js"></script>
+    <script src="price-range.js"></script>
+    <script src="watchlist.js"></script>
+</body>
+</html>

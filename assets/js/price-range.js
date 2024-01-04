@@ -51,7 +51,8 @@ function getPriceDeals(stores, priceLow, priceHigh, title) {
                 let salePrice = '<mark>' + data[key].salePrice + '</mark>'
                 let normalPrice = '<span class="strike">' + data[key].normalPrice + '</span>'
                 let saleInfo = normalPrice + " is now " + salePrice;
-                storeDeals.append('<p name="deal">' + data[key].title + '<br/>' + saleInfo + '</p>');
+                let saveWatch = '<button name="watch" id="game-' + data[key].gameID + '" data-gameID="' + data[key].gameID +'" data-gameTitle="' + data[key].title + '">Watch</button>';
+                storeDeals.append('<p name="deal">' + data[key].title + '<br/>' + saleInfo + '<br/>' + saveWatch + '</p>');
             }
           
         })
@@ -67,6 +68,7 @@ function getPriceDeals(stores, priceLow, priceHigh, title) {
        
       // Set another completion function for the request above
       jqxhr.always(function() {
+        $('button[name="watch"]').on("click", handleWatch);
         console.log("getDeals:", "Completed.")
       });
 }
