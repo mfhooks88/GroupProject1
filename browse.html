@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Browse</title>
@@ -30,10 +31,20 @@
             <li><a href="./contact.html">Contact Us</a></li>
         </ul>
     </header>
-    <br>
-    <br>
 
     <main>
+        <section class="row deep-purple darken-4">
+            <div class="col s10 offset-m2 offset-s1 white-text">BROWSE FILTERS</div>
+            <br /><br />
+            <div class="col s10 offset-m2 offset-s1 white-text">
+                <div id="price-range-slider" style="width: 200px;"> </div>
+                <form id="filter-results" class="form">
+                    <div id="price-range-slider"> </div>
+                    <p style="margin-top: 1rem;">Min Price is: <span id="price-min"></span> -- Max Price is: <span id="price-max"></span></p>
+                </form>
+            </div>
+        </section>
+
         <table class="highlight centered responsive-table white-text">
             <thead>
                 <tr>
@@ -108,10 +119,11 @@
     </footer>
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Change this to merged JS files -->
+    <script src="./assets/js/price-range.js"></script>
 </body>
 
 </html>
