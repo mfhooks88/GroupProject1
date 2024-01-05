@@ -19,7 +19,7 @@
                 <ul id="nav-mobile" class="right hide-on-small-only">
                     <li class="active #ff80ab pink accent-3"><a href="./home.html">Home</a></li>
                     <li><a href="./browse.html">Browse</a></li>
-                    <li><a href="./search.html">Search</a></li>
+                    <li><a href="#wishlist" class="modal-trigger">Wish List</a></li>
                     <li><a href="./contact.html">Contact Us</a></li>
                 </ul>
             </div>
@@ -93,7 +93,7 @@
         </section>
 
         <section class="row">
-            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE BY STORE</div>
+            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE FEATURED STORES</div>
             <div class="col s5 m2 offset-m2 offset-s1">
                 <div class="card">
                     <div class="card-image">
@@ -131,7 +131,7 @@
             <div class="col s10 m4 offset-m2 offset-s1">
                 <div class="card">
                     <div class="card-image">
-                        <a href="./search.html"><img src="assets/pictures/goty-2023-3244454.webp"></a>
+                        <a href="./search.html"><img src="./assets/pictures/goty-2023-3244454.webp"></a>
                     </div>
                 </div>
             </div>
@@ -160,12 +160,52 @@
         </div>
     </footer>
 
+    <!-- Modal Structure -->
+    <div id="wishlist" class="modal">
+        <div class="modal-content">
+            <h4>Watch List</h4>
+            <p>241106 - Assassins Creed Valhalla - Ragnark Edition - 22.50</p>
+            <p>246995 - Ace Combat 7: Skies Unknown - TOP GUN: Maverick Ultimate Edition - 18.19</p>
+            <p>170045 - Assassins Creed Origins Gold Edition - 18.88</p>
+            <p>230833 - Sid Meiers Civilization VI Anthology - 21.75</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
-</body>
 
+    <!-- For Materialize Modal Control -->
+    <!-- These should live in a js file when done -->
+    <script>
+        (function($){
+            $(function(){
+    
+            $('.sidenav').sidenav();
+    
+            }); // end of document ready
+        })(jQuery); // end of jQuery name space
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, options);
+        });
+    
+        // Or with jQuery
+    
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+          
+    </script>
+    <!-- End Materialize Modal Control -->
+
+</body>
 </html>
