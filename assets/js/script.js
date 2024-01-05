@@ -85,9 +85,9 @@ function getDeals(stores) {
                 let salePrice = '<mark>' + data[key].salePrice + '</mark>'
                 let normalPrice = '<span class="strike">' + data[key].normalPrice + '</span>'
                 let saleInfo = normalPrice + " is now " + salePrice;
-                storeDeals.append('<p name="deal">' + data[key].title + '<br/>' + saleInfo + '</p>');
+                storeDeals.append('<div name="deal">' + data[key].title + '<br/>' + saleInfo + '</div>');
             }
-          
+
         })
 
         .fail(function() {
