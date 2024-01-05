@@ -1,0 +1,30 @@
+nav {
+  background-color: #0b0832;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: rgb(18, 18, 18);
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+main.contact {
+  background-image: url(../pictures/Wallpaper-1.png);
+  background-size: cover;
+}
+
+main div.container {
+  border: solid;
+  border-radius: 30px;
+  padding: 0px 0px 50px 0px;
+  background-color: white;
+}
+
+img:hover {
+  opacity: 0.75;
+}
