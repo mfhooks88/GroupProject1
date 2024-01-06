@@ -114,7 +114,7 @@ function getPriceDeals(stores, priceLow, priceHigh, title) {
               let saleInfo = normalPrice + " is now " + salePrice;
               let btnPrice = 'data-price="'  + data[key].normalPrice + '" data-sale="' + data[key].salePrice + '"' ;
               let btnInfo = 'data-gameID="' + data[key].gameID + '" data-gameTitle="' + data[key].title + '"';
-              let saveWatch = '<button name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Watch</button>';
+              let saveWatch = '<button class="btn" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Add to Wish List</button>';
               storeDeals.append('<p name="deal">' + data[key].title + '<br/>' + saleInfo + '<br/>' + saveWatch + '</p>');
           }
         

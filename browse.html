@@ -13,6 +13,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
     <title>Browse for Games</title>
+
+    <style>
+        p[name="deal"] {
+            background-color: white;
+        }
+
+        p[name="deal"]:hover {
+            background-color: orange;
+        }
+    </style>
 </head>
 
 <body onload="getPriceDeals('','0','50')">
@@ -59,12 +69,10 @@
         </section>
 
         <section class="container">
-            <div class="row">
-                <div class="col 12" id="search-results">
+                <div class="row" id="search-results">
                     <!-- Search results dynamically loaded here -->
 
                 </div>
-            </div>
         </section>
         <!-- Commenting out to test loading of content dynamically -->
         <!-- 
