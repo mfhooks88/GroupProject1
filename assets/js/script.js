@@ -111,11 +111,11 @@ function getPriceDeals(stores, priceLow, priceHigh, title) {
           for(const key in data) { //Loops through each key in data array
               let salePrice = '<mark>' + data[key].salePrice + '</mark>'
               let normalPrice = '<span class="strike">' + data[key].normalPrice + '</span>'
-              let saleInfo = normalPrice + " is now " + salePrice;
+              let saleInfo = " was " + normalPrice + " is now " + salePrice;
               let btnPrice = 'data-price="'  + data[key].normalPrice + '" data-sale="' + data[key].salePrice + '"' ;
               let btnInfo = 'data-gameID="' + data[key].gameID + '" data-gameTitle="' + data[key].title + '"';
-              let saveWatch = '<button class="btn" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Add to Wish List</button>';
-              storeDeals.append('<p name="deal">' + data[key].title + '<br/>' + saleInfo + '<br/>' + saveWatch + '</p>');
+              let saveWatch = '<button class="btn col s2" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Add to Wish List</button>';
+              storeDeals.append('<div name="deal" class="row"><p class="col s10">' + data[key].title + ' | ' + saleInfo + '</p>' + saveWatch + '</div>');
           }
         
       })

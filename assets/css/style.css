@@ -40,11 +40,11 @@ blockquote {
 
 
 /* Specific styling for deals information */
-p[name="deal"] {
+div[name="deal"] {
   background-color: white;
 }
 
-p[name="deal"]:hover {
+div[name="deal"]:hover {
   background-color: orange;
 }
 
