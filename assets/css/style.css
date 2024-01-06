@@ -36,3 +36,18 @@ img:hover {
 blockquote {
   font-family: 'Roboto Mono', monospace;;
 }
+
+
+
+/* Specific styling for deals information */
+p[name="deal"] {
+  background-color: white;
+}
+
+p[name="deal"]:hover {
+  background-color: orange;
+}
+
+.strike {
+  text-decoration: line-through;
+}
