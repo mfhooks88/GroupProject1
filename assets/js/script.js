@@ -6,10 +6,10 @@
         const storeList = $('body');
         const storeForm = $('#store-select');
         const storeDeals = $('#search-results');
-        const priceSlider = $('#price-range-slider')
+        const priceSlider = $('#price-range-slider');
         const priceDisplayMin = $('#price-min');
         const priceDisplayMax = $('#price-max');
-        const priceForm = $('#filter-results-form');
+        const priceForm = $('#filter-results');
 
     // Default variables needed in fetch
     const baseURL = 'https://www.cheapshark.com'
@@ -179,7 +179,6 @@ function makeSlider() {
           //Set Deal Price Variables
               priceMin = ui.values[0];
               priceMax = ui.values[1];
-
           //Handle displaying values
           priceDisplayMin.text("$" + ui.values[0]);
           if(ui.values[1] == 50) { priceDisplayMax.text("$" + ui.values[1] + "+"); }
@@ -191,6 +190,11 @@ function makeSlider() {
          } else { priceDisplayMax.text("$" + priceSlider.slider("values", 1)); }
 }
 
+function handlePriceRangeForm(event) {
+  event.preventDefault();
+  console.log("Submitted Form.")
+  getPriceDeals('', priceMin, priceMax);
+}
 
 
 //Page Load function/wait
@@ -199,7 +203,8 @@ $(document).ready(function() {
     //getStores();
     makeSlider();
 
-    //storeForm.submit(handleFormDeals);
+    storeForm.submit(handleFormDeals);
+    priceForm.submit(handlePriceRangeForm);
 
     const watchListTxt = readLocalStorage(watchKey);
 

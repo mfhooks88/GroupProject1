@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
     <title>Browse for Games</title>
 </head>
 
@@ -38,14 +39,22 @@
 
     <main>
         <section class="row deep-purple darken-4">
-            <div class="col s10 offset-m2 offset-s1 white-text">BROWSE FILTERS</div>
-            <br /><br />
-            <div class="col s10 offset-m2 offset-s1 white-text">
-                <div id="price-range-slider" style="width: 200px;"> </div>
-                <form id="filter-results" class="form">
-                    <div id="price-range-slider"> </div>
-                    <p style="margin-top: 1rem;">Min Price is: <span id="price-min"></span> -- Max Price is: <span id="price-max"></span></p>
+            <br />
+            <div class="col s12 white-text">
+                <form id="filter-results" class="form row">
+                    <div id="pricing-group" class="col s6">
+                        <span style="display: inline-block; padding-right: 1rem;">Price Range: </span>
+                        <div id="price-range-slider" style="margin-left: 4px; display: inline-block; width: 200px "> </div>
+                        <span style="display: inline-block; padding-left: 1rem;"><span id="price-min"></span> - <span id="price-max"></span></span>
+                        <button id="set-price" class="btn" style="margin-left: 5px;">Set</button>
+                    </div>
+                    <div id="rating-group" class="col s6">
+                        <span style="display: inline-block; padding-right: 1rem;">Steam Rating: </span>
+                        <div id="steam-rading-slider" style="margin-left: 4px; display: inline-block; width: 200px "> </div>
+                        <span style="display: inline-block; padding-left: 1rem;">Rating #</span>
+                    </div>
                 </form>
+                <br />
             </div>
         </section>
 
@@ -136,7 +145,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- Modal Structure -->
     <div id="watch-list" class="modal bottom-sheet deep-purple darken-4">
         <div class="modal-footer deep-purple darken-5">
