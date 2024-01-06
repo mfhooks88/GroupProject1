@@ -28,3 +28,7 @@ main div.container {
 img:hover {
   opacity: 0.75;
 }
+
+.brand-logo {
+  font-family: 'Bungee Spice', sans-serif;
+}
