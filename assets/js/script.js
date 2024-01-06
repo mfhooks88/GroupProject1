@@ -12,6 +12,9 @@
     const apiStores = baseURL + '/api/1.0/stores';
     const apiDeal = baseURL + '/api/1.0/deals'
 
+    // Variables for project local storage
+    const watchKey = 'game-deals-watchlist';
+
 function getStores() {
     // https://www.cheapshark.com/api/1.0/stores
     // Returns a full list of store IDs, names, and a flag specifying if store is active.
@@ -122,11 +125,43 @@ function handleFormDeals(event) {
     getDeals(strValues);
 }
 
+function handleWatch(event) {
+    event.preventDefault();
+    console.log("Watch List:", event.target.getAttribute("data-gameID") + " | " + event.target.getAttribute("data-gameTitle"));
+
+    //Create object with game information to watch
+    let watchThisGame = {
+        id: event.target.getAttribute("data-gameID"),
+        title: event.target.getAttribute("data-gameTitle"),
+        sale: event.target.getAttribute("data-sale"),
+        price: event.target.getAttribute("data-price")
+    }
+
+    //Write to local storage
+    writeLocalStorage(watchKey, watchThisGame);
+}
 
 //Page Load function/wait
-$(function() {
+$(document).ready(function() {
     //Calls getStores on load for testing display of stores
     getStores();
 
     storeForm.submit(handleFormDeals);
+
+    const watchListTxt = readLocalStorage(watchKey);
+
+    $('#watch-list-content').innerHTML = '';
+    watchListTxt.forEach(element => {
+        $('#watch-list-content').append("<p>" + element.id + " - " + element.title + " - " + element.sale + "</p>"); });
+  
+  //Materialize Sidenav Navigation
+  $('.sidenav').sidenav();
+  
+  //Modal Information
+      document.addEventListener('DOMContentLoaded', function() {
+          var elems = document.querySelectorAll('.modal');
+          var instances = M.Modal.init(elems, options);
+      });
+  // Modal Control
+  $('.modal').modal();
 });

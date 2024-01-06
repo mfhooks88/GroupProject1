@@ -15,8 +15,9 @@
     <header>
         <nav>
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo left"><i class="material-icons">videogame_asset</i>Quick$ave™️</a>
-                <ul id="nav-mobile" class="right hide-on-small-only">
+                <a href="#!" class="brand-logo"><i class="material-icons">videogame_asset</i>Quick$ave™️</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li class="active #ff80ab pink accent-3"><a href="./home.html">Home</a></li>
                     <li><a href="./browse.html">Browse</a></li>
                     <li><a href="#watch-list" class="modal-trigger">Wish List</a></li>
@@ -160,16 +161,13 @@
     </footer>
 
     <!-- Modal Structure -->
-    <div id="watch-list" class="modal bottom-sheet">
-        <div class="modal-content">
-            <h4>Watch List</h4>
-            <p>241106 - Assassins Creed Valhalla - Ragnark Edition - 22.50</p>
-            <p>246995 - Ace Combat 7: Skies Unknown - TOP GUN: Maverick Ultimate Edition - 18.19</p>
-            <p>170045 - Assassins Creed Origins Gold Edition - 18.88</p>
-            <p>230833 - Sid Meiers Civilization VI Anthology - 21.75</p>
+    <div id="watch-list" class="modal bottom-sheet deep-purple darken-4">
+        <div class="modal-footer deep-purple darken-5">
+            <a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a>
         </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        <div class="modal-content white-text">
+            <h4>Wish List</h4>
+            <div id="watch-list-content"></div>
         </div>
     </div>
 
@@ -178,32 +176,8 @@
     
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/js/read_write-localstorage.js"></script>
     <script src="./assets/js/script.js"></script>
-
-    <!-- For Materialize Modal Control -->
-    <!-- These should live in a js file when done -->
-    <script>
-        (function($){
-            $(function(){
-    
-            $('.sidenav').sidenav();
-    
-            }); // end of document ready
-        })(jQuery); // end of jQuery name space
-    
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems = document.querySelectorAll('.modal');
-            var instances = M.Modal.init(elems, options);
-        });
-    
-        // Or with jQuery
-    
-        $(document).ready(function(){
-            $('.modal').modal();
-        });
-          
-    </script>
-    <!-- End Materialize Modal Control -->
 
 </body>
 </html>

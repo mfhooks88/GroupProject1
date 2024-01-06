@@ -2,7 +2,7 @@
 const priceSlider = $('#price-range-slider')
 const priceDisplayMin = $('#price-min');
 const priceDisplayMax = $('#price-max');
-const priceForm = $('#price-range-form');
+const priceForm = $('#filter-results-form');
 const storeDeals = $('#display-results');
 
 //API Calls
