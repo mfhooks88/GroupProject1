@@ -196,21 +196,25 @@ function handlePriceRangeForm(event) {
   getPriceDeals('', priceMin, priceMax);
 }
 
+function createWishList() {
+  const watchListTxt = readLocalStorage(watchKey);
+
+  $('#watch-list-content').empty();
+  watchListTxt.forEach(element => {
+      $('#watch-list-content').append("<p>" + element.id + " - " + element.title + " - " + element.sale + "</p>"); });
+}
 
 //Page Load function/wait
 $(document).ready(function() {
     //Calls getStores on load for testing display of stores
     //getStores();
     makeSlider();
+    createWishList();
 
     storeForm.submit(handleFormDeals);
     priceForm.submit(handlePriceRangeForm);
 
-    const watchListTxt = readLocalStorage(watchKey);
 
-    $('#watch-list-content').innerHTML = '';
-    watchListTxt.forEach(element => {
-        $('#watch-list-content').append("<p>" + element.id + " - " + element.title + " - " + element.sale + "</p>"); });
   
   //Materialize Sidenav Navigation
   $('.sidenav').sidenav();
