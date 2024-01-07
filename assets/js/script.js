@@ -185,6 +185,10 @@ function makeSlider() {
       min: 0,
       max: 50,
       values: [0, 50],
+        change: function(event, ui) {
+          //Set Deal Price Variables
+          priceForm.submit();
+        },
       slide: function(event, ui) {
           //Set Deal Price Variables
               priceMin = ui.values[0];
