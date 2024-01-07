@@ -18,12 +18,12 @@
 <body onload="getPriceDeals('','0','50')">
     <header>
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper spacing">
                 <a href="#!" class="brand-logo"><i class="material-icons">videogame_asset</i>Quick$ave™️</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="./home.html">Home</a></li>
-                    <li class="active #ff80ab pink accent-3"><a href="./browse.html">Browse</a></li>
+                    <li class="active #ff80ab orange accent-3"><a href="./browse.html">Browse</a></li>
                     <li><a href="#watch-list" class="modal-trigger" onclick="createWishList()">Wish List</a></li>
                     <li><a href="./contact.html">Contact Us</a></li>
                 </ul>
@@ -38,7 +38,7 @@
     </header>
 
     <main>
-        <section class="row deep-purple darken-4">
+        <section class="row deep-purple darken-3">
             <br />
             <div class="col s12 white-text">
                 <form id="filter-results" class="form row">
@@ -125,22 +125,24 @@
         </table> -->
     </main>
 
-    <footer class="page-footer black">
+    <footer class="page-footer deep-purple darken-5">
         <div class="container">
             <div class="row">
                 <div>
                     <ul>
-                        <li><a class="grey-text text-lighten-3 col m3 offset-m1" href="./home.html">Home</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3 offset-m1" href="./browse.html">Browse</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3 offset-m1" href="./contact.html">Contact Us</a>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./home.html">Home</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./browse.html">Browse</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1 modal-trigger" href="#watch-list" onclick="createWishList()">Wish List</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./contact.html">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="footer-copyright hide-on-med-and-down">
-            <div class="container">
-                © 2024 QuickSave Multimedia Ltd. All rights reserved. All trademarks are property of their respective owners in the US and other countries. 
-                Terms and Conditions | Privacy Policy | Cookie Policy | Legal | Subscriber Agreement | Refunds | Careers
+        <div class="footer-copyright hide-on-med-and-down deep-purple darken-4 text-sm">
+            <div class="container white-text text-center">
+                <span>© 2024 QuickSave Multimedia Ltd. All rights reserved. All trademarks are property of their respective owners in the US and other countries.</span>
+                <br />
+                <span>Terms and Conditions | Privacy Policy | Cookie Policy | Legal | Subscriber Agreement | Refunds | Careers</span>
             </div>
         </div>
     </footer>

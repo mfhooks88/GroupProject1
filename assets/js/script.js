@@ -15,6 +15,8 @@
     const baseURL = 'https://www.cheapshark.com'
     const apiStores = baseURL + '/api/1.0/stores';
     const apiDeal = baseURL + '/api/1.0/deals'
+    const apiGame = baseURL + '/api/1.0/games'
+    const urlDirect = baseURL + '/redirect?dealID='
 
     // Variables for project local storage
     const watchKey = 'game-deals-watchlist';
@@ -109,13 +111,17 @@ function getPriceDeals(stores, priceLow, priceHigh, title) {
           storeDeals.html('');
           //This is where the data is handled
           for(const key in data) { //Loops through each key in data array
-              let salePrice = '<mark>' + data[key].salePrice + '</mark>'
-              let normalPrice = '<span class="strike">' + data[key].normalPrice + '</span>'
-              let saleInfo = " was " + normalPrice + " is now " + salePrice;
-              let btnPrice = 'data-price="'  + data[key].normalPrice + '" data-sale="' + data[key].salePrice + '"' ;
+              let salePrice = '<mark>' + data[key].salePrice + '</mark>';
+              let normalPrice = '<span class="strike">' + data[key].normalPrice + '</span>';
+              let btnPrice = 'data-price="'  + data[key].normalPrice + '" data-sale="' + data[key].salePrice + '"';
+              let saleInfo = salePrice + '<sup> ' + normalPrice + '</sup>';
               let btnInfo = 'data-gameID="' + data[key].gameID + '" data-gameTitle="' + data[key].title + '"';
-              let saveWatch = '<button class="btn col s2" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Add to Wish List</button>';
-              storeDeals.append('<div name="deal" class="row"><p class="col s10">' + data[key].title + ' | ' + saleInfo + '</p>' + saveWatch + '</div>');
+              let saveWatch = '<button class="btn col s2 deep-purple darken-3" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Wish List</button>';
+              let gameMetacritic = data[key].metacriticScore;
+              let gameSteamRating = data[key].steamRatingPercent;
+              let gameSteamRatingText = data[key].steamRatingText;
+              
+              storeDeals.append('<div name="deal" class="row"><a class="col s10" href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' | ' + saleInfo + '</a>' + saveWatch + '</div>');
           }
         
       })
@@ -209,11 +215,9 @@ $(document).ready(function() {
     //Calls getStores on load for testing display of stores
     //getStores();
     makeSlider();
-    createWishList();
 
     storeForm.submit(handleFormDeals);
     priceForm.submit(handlePriceRangeForm);
-
 
   
   //Materialize Sidenav Navigation

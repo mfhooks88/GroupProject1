@@ -1,4 +1,4 @@
-nav {
+nav, footer {
   background-color: #0b0832;
 }
 
@@ -38,11 +38,28 @@ blockquote {
 }
 
 
+/* Font Sizing */
+.text-sm { 
+  font-size: 75%;
+}
+
+.text-center { 
+  text-align: center;
+}
+
+.spacing {
+  padding-left: 1rem;
+}
 
 /* Specific styling for deals information */
 div[name="deal"] {
   background-color: white;
 }
+
+div[name="deal"] a {
+  padding-top: .4rem !important;
+}
+
 
 div[name="deal"]:hover {
   background-color: orange;
@@ -50,4 +67,12 @@ div[name="deal"]:hover {
 
 .strike {
   text-decoration: line-through;
+  color: red
+}
+
+mark {
+  background-color: #311b92;
+  color: white;
+  font-weight: bold;
+  padding: 0 .3rem;
 }
