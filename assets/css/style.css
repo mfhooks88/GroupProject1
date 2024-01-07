@@ -105,3 +105,16 @@ mark {
   right: 8% !important;
   bottom: 10%;
 }
+
+/* Stores Grid */
+.grid-stores {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-row-gap: .5em;
+}
+
+#store-group input[type="checkbox"] {
+  padding: 0;
+  margin: 0;
+}

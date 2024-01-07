@@ -5,6 +5,7 @@
     // Define some elements for testing
         const storeList = $('body');
         const storeForm = $('#store-select');
+        const storeGroup = $('#store-group');
         const storeDeals = $('#search-results');
         const priceSlider = $('#price-range-slider');
         const raitingSlider = $('#steam-rading-slider');
@@ -52,10 +53,10 @@ function getStores() {
                 // storeList.append('<p><a name="store" href="' + apiDeal + "?storeID=" + storeID + '">' +
                 // storeName + '</a>' + '<img name="image" src="' + baseURL + storeImage.banner + '"></p>');
                 
-                let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" />'
-                let label = '<label for="' + storeID + '">' + storeName + '</label>'
+                let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" class="filled-in" checked />'
+                let label = '<label for="' + storeID + '">' + checkBox + '<span>' + storeName + '</span></label>'
 
-                storeForm.append('<div name="form-group">' + checkBox + label + "</div>");
+                storeGroup.append('<div name="form-group">' + label + "</div>");
 
                 if(storeActive == 1) { // if active is 1 (true), set class to active for styling
                     $('label[for="' + storeID + '"]').addClass("active");
@@ -192,7 +193,7 @@ function handleFormDeals(event) {
     event.preventDefault();
 
     var values = [];
-    $("#store-select :input").each(function() {
+    $("#store-group :input").each(function() {
        //values[this.id] = $(this).is(":checked");
        if($(this).is(":checked")) {
         values.push($(this).val());
@@ -272,7 +273,19 @@ function makeRatingSlider() {
 function handlePriceRangeForm(event) {
   event.preventDefault();
   console.log("Submitted Form.")
-  getPriceDeals('', priceMin, priceMax, '30', steamRate);
+
+  var values = [];
+  $("#store-group :input").each(function() {
+     //values[this.id] = $(this).is(":checked");
+     if($(this).is(":checked")) {
+      values.push($(this).val());
+     }
+  });
+
+  let strStores = values.toString();
+  if(strStores == '') { console.log("nothing selected"); }
+
+  getPriceDeals(strStores, priceMin, priceMax, '30', steamRate);
 }
 
 function handleTitleSearch(event) {
