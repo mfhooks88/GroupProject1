@@ -56,11 +56,6 @@ div[name="deal"] {
   background-color: white;
 }
 
-div[name="deal"] a {
-  padding-top: .4rem !important;
-}
-
-
 div[name="deal"]:hover {
   background-color: orange;
 }

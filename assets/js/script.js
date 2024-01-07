@@ -121,7 +121,7 @@ function getPriceDeals(stores, priceLow, priceHigh, title) {
               let gameSteamRating = data[key].steamRatingPercent;
               let gameSteamRatingText = data[key].steamRatingText;
               
-              storeDeals.append('<div name="deal" class="row"><a class="col s10" href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' | ' + saleInfo + '</a>' + saveWatch + '</div>');
+              storeDeals.append('<div name="deal" class="row valign-wrapper"><a class="col s10 " href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' | ' + saleInfo + '</a>' + saveWatch + '</div>');
           }
         
       })
@@ -162,6 +162,8 @@ function handleFormDeals(event) {
 function handleWatch(event) {
     event.preventDefault();
     console.log("Watch List:", event.target.getAttribute("data-gameID") + " | " + event.target.getAttribute("data-gameTitle"));
+
+    M.toast({html: 'Saved to Wish List.', classes: 'orange accent-3', displayLength: 2500})
 
     //Create object with game information to watch
     let watchThisGame = {
