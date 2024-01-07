@@ -118,7 +118,7 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, title) {
               let btnPrice = 'data-price="'  + data[key].normalPrice + '" data-sale="' + data[key].salePrice + '"';
               let saleInfo = salePrice + '<sup> ' + normalPrice + '</sup>';
               let btnInfo = 'data-gameID="' + data[key].gameID + '" data-gameTitle="' + data[key].title + '"';
-              let saveWatch = '<button class="btn col s2 deep-purple darken-3" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Wish List</button>';
+              let saveWatch = '<button class="btn col s2 deep-purple accent-3 flow-text" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Wish List</button>';
               let gameMetacritic = data[key].metacriticScore;
               let gameSteamRating = data[key].steamRatingPercent;
               let gameSteamRatingText = data[key].steamRatingText;

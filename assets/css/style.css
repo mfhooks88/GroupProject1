@@ -9,6 +9,10 @@ body {
   background-color: rgb(18, 18, 18);
 }
 
+nav li:hover {
+  background-color: #4527a0;
+}
+
 main {
   flex: 1 0 auto;
 }
@@ -35,6 +39,11 @@ img:hover {
 
 blockquote {
   font-family: 'Roboto Mono', monospace;;
+}
+
+ul.sidenav {
+  background-color: transparent;
+  backdrop-filter: blur(10px);
 }
 
 
