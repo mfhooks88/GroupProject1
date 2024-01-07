@@ -60,6 +60,10 @@ div[name="deal"]:hover {
   background-color: orange;
 }
 
+div[name="deal"]:hover a {
+  color: white !important;
+}
+
 .strike {
   text-decoration: line-through;
   color: red

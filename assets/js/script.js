@@ -78,12 +78,14 @@ function getStores() {
       });
 }
 
-function getPriceDeals(stores, priceLow, priceHigh, title) {
+function getPriceDeals(stores, priceLow, priceHigh, limit, title) {
   let searchDeals;
   let paramHandle = "?";
 
   console.log("Stores:", stores)
   console.log("Range:", priceLow + " - " + priceHigh)
+
+  storeDeals.html('<p class="white-text">Checking for updated content...</p>');
 
   if(stores != '') { searchDeals = apiDeal + paramHandle + 'storeID=' + stores;}
   else { searchDeals = apiDeal; }
@@ -121,7 +123,7 @@ function getPriceDeals(stores, priceLow, priceHigh, title) {
               let gameSteamRating = data[key].steamRatingPercent;
               let gameSteamRatingText = data[key].steamRatingText;
               
-              storeDeals.append('<div name="deal" class="row valign-wrapper"><a class="col s10 " href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' | ' + saleInfo + '</a>' + saveWatch + '</div>');
+              storeDeals.append('<div name="deal" class="row valign-wrapper"><a class="col s10 deep-purple-text text-darken-4" href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' ' + saleInfo + '</a>' + saveWatch + '</div>');
           }
         
       })
@@ -201,7 +203,7 @@ function makeSlider() {
 function handlePriceRangeForm(event) {
   event.preventDefault();
   console.log("Submitted Form.")
-  getPriceDeals('', priceMin, priceMax);
+  getPriceDeals('', priceMin, priceMax, '30');
 }
 
 function createWishList() {
