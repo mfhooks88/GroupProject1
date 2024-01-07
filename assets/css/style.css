@@ -19,13 +19,13 @@ main {
 
 main.contact {
   background-image: url(../pictures/Wallpaper-1.png);
-  background-size: cover;
+  background-size: contain;
 }
 
-main div.contact{
+main div form.contact{
   border: solid;
   border-radius: 30px;
-  padding: 0px 0px 50px 0px;
+  padding: 0px 0px 80px 0px;
   background-color: white;
 }
 
