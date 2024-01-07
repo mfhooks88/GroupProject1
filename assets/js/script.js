@@ -53,13 +53,12 @@ function getStores() {
                 // storeList.append('<p><a name="store" href="' + apiDeal + "?storeID=" + storeID + '">' +
                 // storeName + '</a>' + '<img name="image" src="' + baseURL + storeImage.banner + '"></p>');
                 
-                let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" class="filled-in" checked />'
-                let label = '<label for="' + storeID + '">' + checkBox + '<span>' + storeName + '</span></label>'
-
-                storeGroup.append('<div name="form-group">' + label + "</div>");
+                let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" class="filled-in" />'
+                let label = '<label " for="' + storeID + '">' + checkBox + '<span>' + storeName + '</span></label>'
 
                 if(storeActive == 1) { // if active is 1 (true), set class to active for styling
-                    $('label[for="' + storeID + '"]').addClass("active");
+                  storeGroup.append('<div name="form-group">' + label + "</div>");
+                    console.log("Active:", storeActive);
                 }
                 
             }
@@ -70,7 +69,7 @@ function getStores() {
           console.log("getStores:", "Failed.")
         })
         .always(function() {
-          
+
         });
        
       // Perform other work here
@@ -293,7 +292,6 @@ function handleTitleSearch(event) {
 
 }
 
-
 function createWishList() {
   const watchListTxt = readLocalStorage(watchKey);
 
@@ -311,10 +309,12 @@ $(document).ready(function() {
 
     storeForm.submit(handleFormDeals);
     priceForm.submit(handlePriceRangeForm);
-
   
   //Materialize Sidenav Navigation
   $('.sidenav').sidenav();
+
+  //Checkbox Change Form - call aPI if changing checkbox
+  $("input[name='store']").on("change", handlePriceRangeForm);
   
   //Modal Information
       document.addEventListener('DOMContentLoaded', function() {

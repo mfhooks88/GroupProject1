@@ -113,8 +113,3 @@ mark {
   grid-template-rows: repeat(auto-fill, auto);
   grid-row-gap: .5em;
 }
-
-#store-group input[type="checkbox"] {
-  padding: 0;
-  margin: 0;
-}
