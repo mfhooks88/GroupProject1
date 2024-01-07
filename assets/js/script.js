@@ -7,8 +7,10 @@
         const storeForm = $('#store-select');
         const storeDeals = $('#search-results');
         const priceSlider = $('#price-range-slider');
+        const raitingSlider = $('#steam-rading-slider');
         const priceDisplayMin = $('#price-min');
         const priceDisplayMax = $('#price-max');
+        const raitingDisplay = $('#raiting');
         const priceForm = $('#filter-results');
 
     // Default variables needed in fetch
@@ -24,6 +26,8 @@
     //Price Range Values
     let priceMin = '0';
     let priceMax = '50';
+    let resultLimit = '30';
+    let steamRate = '40';
 
 function getStores() {
     // https://www.cheapshark.com/api/1.0/stores
@@ -78,29 +82,53 @@ function getStores() {
       });
 }
 
-function getPriceDeals(stores, priceLow, priceHigh, limit, title) {
+function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
   let searchDeals;
   let paramHandle = "?";
+
+  if(stores == null) { stores = ''; }
+  if(priceLow == null) { priceLow = priceMin; }
+  if(priceHigh == null) { priceHigh = priceMax; }
+  if(limit == null) { limit = resultLimit; }
+  if(raiting == null) { raiting = steamRate; }
+
 
   console.log("Stores:", stores)
   console.log("Range:", priceLow + " - " + priceHigh)
 
   storeDeals.html('<p class="white-text">Checking for updated content...</p>');
 
-  if(stores != '') { searchDeals = apiDeal + paramHandle + 'storeID=' + stores;}
-  else { searchDeals = apiDeal; }
 
-      //Handles changing the paramHandle from ? to &
-      if (searchDeals.includes('?')) { paramHandle = "&"; }
+  //Start IF statements to handle if it should be a ? or & in URL 
+    if(stores != '') { searchDeals = apiDeal + paramHandle + 'storeID=' + stores;}
+    else { searchDeals = apiDeal; }
 
-  if(priceLow != '') { searchDeals = searchDeals + paramHandle + "lowerPrice=" + priceLow; }
-  else { searchDeals = searchDeals; }
+        //Handles changing the paramHandle from ? to &
+        if (searchDeals.includes('?')) { paramHandle = "&"; }
 
-      //Handles changing the paramHandle from ? to &
-      if (searchDeals.includes('?')) { paramHandle = "&"; }
+    if(priceLow != '') { searchDeals = searchDeals + paramHandle + "lowerPrice=" + priceLow; }
+    else { searchDeals = searchDeals; }
 
-  if(priceHigh != '') { searchDeals = searchDeals + paramHandle + "upperPrice=" + priceHigh; }
-  else { searchDeals = searchDeals; }
+        //Handles changing the paramHandle from ? to &
+        if (searchDeals.includes('?')) { paramHandle = "&"; }
+
+    if(priceHigh != '') { searchDeals = searchDeals + paramHandle + "upperPrice=" + priceHigh; }
+    else { searchDeals = searchDeals; }
+
+        //Handles changing the paramHandle from ? to &
+        if (searchDeals.includes('?')) { paramHandle = "&"; }
+
+    if(limit != '') { searchDeals = searchDeals + paramHandle + "pageSize=" + limit; }
+    else { searchDeals = searchDeals; }
+
+        //Handles changing the paramHandle from ? to &
+        if (searchDeals.includes('?')) { paramHandle = "&"; }
+
+    if(raiting != '') { searchDeals = searchDeals + paramHandle + "steamRating=" + raiting; }
+    else { searchDeals = searchDeals; }
+  //End IF Statements
+
+
 
   console.log('Getting Deals from:', searchDeals);
 
@@ -118,7 +146,7 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, title) {
               let btnPrice = 'data-price="'  + data[key].normalPrice + '" data-sale="' + data[key].salePrice + '"';
               let saleInfo = salePrice + '<sup> ' + normalPrice + '</sup>';
               let btnInfo = 'data-gameID="' + data[key].gameID + '" data-gameTitle="' + data[key].title + '"';
-              let saveWatch = '<button class="btn col s2 deep-purple accent-3 flow-text" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>Wish List</button>';
+              let saveWatch = '<button class="btn col s2 deep-purple accent-3 flow-text" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>+ Wish</button>';
               let gameMetacritic = data[key].metacriticScore;
               let gameSteamRating = data[key].steamRatingPercent;
               let gameSteamRatingText = data[key].steamRatingText;
@@ -142,6 +170,22 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, title) {
       $('button[name="watch"]').on("click", handleWatch);
       console.log("getDeals:", "Completed.")
     });
+}
+
+function getTitle(title) {
+  let searchDeals = apiGame + '?title=' + title;
+
+  var jqxhr = $.get(userAPI + noInfo)
+  .done(function(data) {
+    //Loaded Information Successfully
+    console.log("Title Search:", data.results);
+  })
+  .fail(function() {
+    console.log("Title Search:", "Failed.")
+  })
+  .always(function() {
+    console.log("Title Search:", "Completed.")
+  });
 }
 
 function handleFormDeals(event) {
@@ -186,7 +230,7 @@ function makeSlider() {
       max: 50,
       values: [0, 50],
         change: function(event, ui) {
-          //Set Deal Price Variables
+          //Submit form
           priceForm.submit();
         },
       slide: function(event, ui) {
@@ -204,11 +248,38 @@ function makeSlider() {
          } else { priceDisplayMax.text("$" + priceSlider.slider("values", 1)); }
 }
 
+function makeRatingSlider() {
+  $( function() {
+    raitingSlider.slider({
+      value:40,
+      min: 40,
+      max: 100,
+      step: 5,
+      change: function(event, ui) {
+        //Submit form
+        priceForm.submit();
+      },
+      slide: function( event, ui ) {
+        raitingDisplay.text( ui.value + "%" );
+        steamRate = ui.value;
+      }
+    });
+    raitingDisplay.text(raitingSlider.slider( "value" ) + "%" );
+    steamRate = raitingSlider.slider( "value" );
+  } );
+}
+
 function handlePriceRangeForm(event) {
   event.preventDefault();
   console.log("Submitted Form.")
-  getPriceDeals('', priceMin, priceMax, '30');
+  getPriceDeals('', priceMin, priceMax, '30', steamRate);
 }
+
+function handleTitleSearch(event) {
+  //Handle title search
+
+}
+
 
 function createWishList() {
   const watchListTxt = readLocalStorage(watchKey);
@@ -223,6 +294,7 @@ $(document).ready(function() {
     //Calls getStores on load for testing display of stores
     //getStores();
     makeSlider();
+    makeRatingSlider();
 
     storeForm.submit(handleFormDeals);
     priceForm.submit(handlePriceRangeForm);

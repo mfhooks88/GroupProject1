@@ -15,7 +15,7 @@
     <title>Browse for Games</title>
 </head>
 
-<body onload="getPriceDeals('','0','50')">
+<body onload="getPriceDeals()">
     <header>
         <nav>
             <div class="nav-wrapper spacing">
@@ -31,9 +31,9 @@
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li class="white"><a href="./browse.html">Browse</a></li>
-            <li class="white"><a href="#watch-list" class="modal-trigger" onclick="createWishList()">Wish List</a></li>
-            <li class="white"><a href="./contact.html">Contact Us</a></li>
+            <li><a href="./browse.html" class="white-text">Browse</a></li>
+            <li><a href="#watch-list" class="white-text modal-trigger" onclick="createWishList()">Wish List</a></li>
+            <li><a href="./contact.html"  class="white-text">Contact Us</a></li>
         </ul>
     </header>
 
@@ -44,14 +44,14 @@
                 <form id="filter-results" class="form row">
                     <div id="pricing-group" class="col s6">
                         <span style="display: inline-block; padding-right: 1rem;">Price Range: </span>
-                        <div id="price-range-slider" style="margin-left: 4px; display: inline-block; width: 200px "> </div>
+                        <div id="price-range-slider" style="margin-left: 4px; display: inline-block; min-width: 100px;"> </div>
                         <span style="display: inline-block; padding-left: 1rem;"><span id="price-min"></span> - <span id="price-max"></span></span>
-                        <!-- <button id="set-price" class="btn orange accent-3" style="margin-left: 5px;">Set</button> -->
                     </div>
+
                     <div id="rating-group" class="col s6">
                         <span style="display: inline-block; padding-right: 1rem;">Steam Rating: </span>
-                        <div id="steam-rading-slider" style="margin-left: 4px; display: inline-block; width: 200px "> </div>
-                        <span style="display: inline-block; padding-left: 1rem;">Rating #</span>
+                        <div id="steam-rading-slider" style="margin-left: 4px; display: inline-block; min-width: 100px "> </div>
+                        <span id="raiting" style="display: inline-block; padding-left: 1rem;"></span>
                     </div>
                 </form>
                 <br />

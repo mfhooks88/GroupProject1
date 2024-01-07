@@ -7,76 +7,98 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Search</title>
-    
+    <title>Welcome to QuickSave!</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo left"><i class="material-icons">videogame_asset</i>Quick$ave™️</a>
-                <ul id="nav-mobile" class="right hide-on-small-only">
-                    <li><a href="./home.html">Home</a></li>
+            <div class="nav-wrapper spacing">
+                <a href="#!" class="brand-logo">🎮 Quick$ave™️</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="active deep-purple lighten-1"><a href="./home.html">Home</a></li>
                     <li><a href="./browse.html">Browse</a></li>
-                    <li class="active #ff80ab pink accent-3"><a
-                            href="./search.html">Search</a></li>
+                    <li><a href="#watch-list" class="modal-trigger" onclick="createWishList()">Wish List</a></li>
                     <li><a href="./contact.html">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="./home.html">Home</a></li>
-            <li><a href="./browse.html">Browse</a></li>
-            <li><a href="./search.html">Search</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
+            <li><a href="./browse.html" class="white-text">Browse</a></li>
+            <li><a href="#watch-list" class="white-text modal-trigger" onclick="createWishList()">Wish List</a></li>
+            <li><a href="./contact.html"  class="white-text">Contact Us</a></li>
         </ul>
     </header>
-    <br>
-    <br>
-    
-    <main>
-        <nav>
-            <div class="nav-wrapper #512da8 deep-purple darken-4">
-                <form>
-                    <div class="input-field ">
-                        <input id="search" type="search"required placeholder="Search...">
-                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                        <i class="material-icons">close</i>
-                    </div>
-                </form>
-            </div>
-        </nav>
 
-        <br>
-        <br>
+    <nav>
+        <div class="nav-wrapper deep-purple darken-3">
+            <form class="row">
+                <div class="input-field col s8 offset-s2">
+                    <input id="search" type="search" required placeholder="Find your next adventure...">
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+    </nav>
+
+    <main>
+        <section class="container">
+            <div class="white-text">Testing</div>
+        </section>
     </main>
 
-    <footer class="page-footer black">
+    <footer class="page-footer deep-purple darken-5">
         <div class="container">
             <div class="row">
                 <div>
                     <ul>
-                        <li><a class="grey-text text-lighten-3 col m3 offset-m1"
-                                href="./home.html">Home</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3"
-                                href="./browse.html">Browse</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3"
-                                href="./search.html">Search</a></li>
-                        <li><a class="grey-text text-lighten-3"
-                                href="./contact.html">Contact Us</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./home.html">Home</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./browse.html">Browse</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1 modal-trigger" href="#watch-list" onclick="createWishList()">Wish List</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./contact.html">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="footer-copyright hide-on-med-and-down deep-purple darken-4 text-sm">
+            <div class="container white-text text-center">
+                <span>© 2024 QuickSave Multimedia Ltd. All rights reserved. All trademarks are property of their respective owners in the US and other countries.</span>
+                <br />
+                <span>Terms and Conditions | Privacy Policy | Cookie Policy | Legal | Subscriber Agreement | Refunds | Careers</span>
+            </div>
+        </div>
     </footer>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
+    <!-- Modal Structure -->
+    <div id="watch-list" class="modal bottom-sheet deep-purple darken-4">
+        <div class="modal-footer deep-purple valign-wrapper row white-text">
+            <div class="col s4 modal-header left-align"><span>Wish List</span></div>
+            <div class="col s1 offset-s8"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
+        </div>
+        <div class="modal-content white-text">
+            <div id="watch-list-content">
+                <!-- Wish List Content Generated Here -->
+            </div>
+        </div>
+    </div>
 
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Custom JS files written for Project -->
+    <script src="./assets/js/read_write-localstorage.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
 </html>

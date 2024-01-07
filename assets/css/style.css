@@ -47,10 +47,9 @@ blockquote {
 }
 
 ul.sidenav {
-  background-color: transparent;
+  background: hsl(0 0% 100% / 0.1);
   backdrop-filter: blur(10px);
 }
-
 
 /* Font Sizing */
 .text-sm { 
