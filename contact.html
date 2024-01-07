@@ -17,14 +17,14 @@
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper spacing">
                 <a href="#!" class="brand-logo">🎮 Quick$ave™️</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="./home.html">Home</a></li>
+                    <li class="active #ff80ab"><a href="./home.html">Home</a></li>
                     <li><a href="./browse.html">Browse</a></li>
                     <li><a href="#watch-list" class="modal-trigger" onclick="createWishList()">Wish List</a></li>
-                    <li  class="active #ff80ab pink accent-3"><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="./contact.html" class="orange accent-3">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
@@ -43,7 +43,7 @@
         <br>
         <br>
         <br>
-        <div class="container bg-img">
+        <div class="container bg-img contact">
             <form action="/action_page.php" class="container">
                 <h1>Contact Us</h1>
 
@@ -80,11 +80,24 @@
         </div>
     </footer>
 
+    <!-- Modal Structure -->
+    <div id="watch-list" class="modal bottom-sheet deep-purple darken-4">
+        <div class="modal-footer deep-purple darken-5">
+            <a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a>
+        </div>
+        <div class="modal-content white-text">
+            <h4>Wish List</h4>
+            <div id="watch-list-content"></div>
+        </div>
+    </div>
+
     <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Custom JS files written for Project -->
+    <script src="./assets/js/read_write-localstorage.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
