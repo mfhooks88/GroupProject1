@@ -119,6 +119,11 @@ mark {
 }
 
 .modal {
-  background: hsl(0 0% 100% / 0.3);
+  background: hsl(0 0% 100% / 0.1);
   backdrop-filter: blur(10px);
+}
+
+#login {
+  padding: .5rem .75rem;
+  border-radius: 2rem;
 }
