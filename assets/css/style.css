@@ -7,7 +7,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: rgb(18, 18, 18);
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto', monospace;
 }
 
 nav li:hover {
