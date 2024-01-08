@@ -346,6 +346,25 @@ function handleCheck(checkbox){
   
 }
 
+// NOT CURRENTLY WORKING, NOT IMPLEMENTED IN CURR CODE
+function removeWishList(remID) {
+  // NOT CURRENTLY WORKING, NOT IMPLEMENTED IN CURR CODE
+  let currList = readLocalStorage(watchKey);
+  console.log("Removed:", currList);
+
+  currList.forEach((element, x) => {
+    var objID = element.id;
+    console.log(objID);
+    if(objID == remID){
+      console.log("Removing:", objID + ": " + element.title);
+      delete currList[x];
+    }
+  });
+
+  console.log("Removed:", currList);
+  writeLocalStorage(watchKey, currList);
+}
+
 //Page Load function/wait
 $(document).ready(function() {
     //Calls slider creation functions, sets event listeners
