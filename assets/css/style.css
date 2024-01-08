@@ -7,6 +7,7 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: rgb(18, 18, 18);
+  font-family: 'Roboto Mono', monospace;
 }
 
 nav li:hover {
@@ -25,7 +26,6 @@ main.contact {
 main div form.contact{
   border: solid;
   border-radius: 30px;
-  padding: 0px 0px 80px 0px;
   color: white;
   background-image: url(../pictures/Wallpaper-1.png);
 }
@@ -38,12 +38,8 @@ img:hover {
   font-family: 'Bungee Spice', sans-serif;
 }
 
-.contact-us {
-  font-family: 'Orbitron', sans-serif;
-}
-
 blockquote {
-  font-family: 'Roboto Mono', monospace;;
+  font-style: italic;
 }
 
 ul.sidenav {
