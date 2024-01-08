@@ -39,22 +39,30 @@
     </header>
 
     <main>
-        <section class="row deep-purple darken-3">
+        <section class="row deep-purple darken-4">
             <br />
             <div class="col s12 white-text">
                 <form id="filter-results" class="form row">
-                    <div id="pricing-group" class="col s6 center-align" style="margin-bottom: 1rem;">
+                    <div id="rating-group" class="col s4 center-align" style="margin-bottom: 1rem;">
+                        <span style="display: inline-block; padding-right: 1rem;">Title: </span>
+                        <div id="title-input-field" style="margin-left: 4px; display: inline-block; min-width: 100px ">
+                            <input type="text" class="browser-default" id="title-input" /> <button>Lookup</button>
+                        </div>
+                    </div>
+
+                    <div id="pricing-group" class="col s4 center-align valign-wrapper" style="margin-bottom: 1rem;">
                         <span style="display: inline-block; padding-right: 1rem;">Price Range: </span>
                         <div id="price-range-slider" style="margin-left: 4px; display: inline-block; min-width: 100px;"> </div>
                         <span style="display: inline-block; padding-left: 1rem;"><span id="price-min"></span> - <span id="price-max"></span></span>
                     </div>
 
-                    <div id="rating-group" class="col s6 center-align" style="margin-bottom: 1rem;">
+                    <div id="rating-group" class="col s4 center-align" style="margin-bottom: 1rem;">
                         <span style="display: inline-block; padding-right: 1rem;">Steam Rating: </span>
                         <div id="steam-rading-slider" style="margin-left: 4px; display: inline-block; min-width: 100px "> </div>
                         <span id="raiting" style="display: inline-block; padding-left: 1rem;"></span>
                     </div>
-                    <div id="store-group" class="col s12 grid-stores">
+
+                    <div id="store-group" class="col s12 grid-custom">
                         <!-- Generate Stores Here -->
 
                     </div>
@@ -97,7 +105,7 @@
             <div class="col s1 offset-s8"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
         </div>
         <div class="modal-content white-text">
-            <div id="watch-list-content">
+            <div id="watch-list-content" class="grid-wish">
                 <!-- Wish List Content Generated Here -->
             </div>
         </div>

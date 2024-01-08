@@ -102,10 +102,18 @@ mark {
   bottom: 10%;
 }
 
-/* Stores Grid */
-.grid-stores {
+/* Custom Grid Layout */
+.grid-custom {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-template-rows: repeat(auto-fill, auto);
-  grid-row-gap: .5em;
+  grid-row-gap: .5rem;
+}
+
+.grid-wish {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-row-gap: .5rem;
+  column-gap: 1rem;
 }

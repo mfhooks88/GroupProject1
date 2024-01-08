@@ -1,5 +1,3 @@
-
-
 function getRandomUser(gender, nationality, onlyReturn) {
     const userAPI = 'https://randomuser.me/api/?results=1';
     const noInfo = '&noinfo';
@@ -16,7 +14,6 @@ function getRandomUser(gender, nationality, onlyReturn) {
       console.log("RandomUser:", "Completed.")
     });
 }
-
 
 
 getRandomUser('male','gb,us');

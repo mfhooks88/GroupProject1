@@ -43,6 +43,7 @@ function getSearchResults() {
           console.log("Title:", "Failed.")
         })
         .always(function() {
-
+            $('button[name="watch"]').on("click", handleWatch);
+            console.log("Title:", "Completed.")
         });
 }

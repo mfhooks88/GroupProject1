@@ -51,12 +51,9 @@ function getStores() {
                 let storeActive = data[key].isActive;
                 // Usage: storeImage.banner, storeImage.icon, storeImage.logo
                 let storeImage = data[key].images;
-
-                // storeList.append('<p><a name="store" href="' + apiDeal + "?storeID=" + storeID + '">' +
-                // storeName + '</a>' + '<img name="image" src="' + baseURL + storeImage.banner + '"></p>');
                 
                 let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" class="filled-in" onClick="handleCheck(this)" />'
-                let label = '<label " for="' + storeID + '">' + checkBox + '<span>' + storeName + '</span></label>'
+                let label = '<label class="grey-text text-lighten-3" for="' + storeID + '">' + checkBox + '<span>' + storeName + '</span></label>'
 
                 if(storeActive == 1) { // if active is 1 (true), set class to active for styling
                   storeGroup.append('<div name="form-group">' + label + "</div>");
@@ -92,14 +89,13 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
   if(priceHigh == null) { priceHigh = priceMax; }
   if(limit == null) { limit = resultLimit; }
   if(raiting == null) { raiting = steamRate; }
-  if(raiting == '40') { raiting = ''}
-
+  if(raiting == '40') { raiting = ''; }
+  if(title == null) { title = ''; }
 
   console.log("Stores:", stores)
   console.log("Range:", priceLow + " - " + priceHigh)
 
   storeDeals.html('<p class="white-text">Checking for updated content...</p>');
-
 
   //Start IF statements to handle if it should be a ? or & in URL 
     if(stores != '') { searchDeals = apiDeal + paramHandle + 'storeID=' + stores;}
@@ -127,6 +123,12 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
         if (searchDeals.includes('?')) { paramHandle = "&"; }
 
     if(raiting != '') { searchDeals = searchDeals + paramHandle + "steamRating=" + raiting; }
+    else { searchDeals = searchDeals; }
+
+        //Handles changing the paramHandle from ? to &
+        if (searchDeals.includes('?')) { paramHandle = "&"; }
+
+    if(title != '') { searchDeals = searchDeals + paramHandle + "title=" + title; }
     else { searchDeals = searchDeals; }
   //End IF Statements
 
@@ -277,7 +279,7 @@ function handlePriceRangeForm(event) {
   console.log("Browse Form:", "Handling.")
 
   var values = [];
-  $("#store-group :input").each(function() {
+  $("#store-group :checkbox").each(function() {
      //values[this.id] = $(this).is(":checked");
      if($(this).is(":checked")) {
       values.push($(this).val());
@@ -287,7 +289,9 @@ function handlePriceRangeForm(event) {
   let strStores = values.toString();
   if(strStores == '') { console.log("Browse Form:", "Store restriction not set."); }
 
-  getPriceDeals(strStores, priceMin, priceMax, '30', steamRate);
+  let gameTitle = $('#title-input').val();
+
+  getPriceDeals(strStores, priceMin, priceMax, '30', steamRate, gameTitle);
 }
 
 function createWishList() {
@@ -295,7 +299,7 @@ function createWishList() {
 
   $('#watch-list-content').empty();
   watchListTxt.forEach(element => {
-      $('#watch-list-content').append("<p>" + element.id + " - " + element.title + " - " + element.sale + "</p>"); });
+      $('#watch-list-content').append('<div><span>' + element.title + '</span> <mark>' + element.sale + '</mark></div>'); });
 }
 
 function handleGameSearch(event) {
@@ -331,7 +335,9 @@ function handleCheck(checkbox){
   let strStores = values.toString();
   if(strStores == '') { console.log("Browse Form:", "Store restriction not set."); }
 
-  getPriceDeals(strStores, priceMin, priceMax, '30', steamRate);
+  let gameTitle = $('#title-input').val();
+
+  getPriceDeals(strStores, priceMin, priceMax, '30', steamRate, gameTitle);
 
   //Re-enable form checkbox
   $("#store-group :input").each(function() {
