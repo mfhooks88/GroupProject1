@@ -31,7 +31,7 @@ function checkUser() {
     if(myUser == '') {
         getRandomUser('male','us','login,name,dob,registered,email,picture');
     }
-    myUser = readLocalStorage('game-deals-user');
+
   return myUser;
 }
 

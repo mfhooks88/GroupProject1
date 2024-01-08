@@ -16,7 +16,7 @@
     <title>Welcome to QuickSave!</title>
 </head>
 
-<body>
+<body onload="getPriceDeals('', '0', '50', '5', '100', '', 1)">
     <header>
         <nav>
             <div class="nav-wrapper spacing">
@@ -129,13 +129,9 @@
         </section>
 
         <section class="row">
-            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE BY TOP SELLERS</div>
-            <div class="col s10 m8 offset-m2 offset-s1">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="./assets/pictures/bg3.jpeg">
-                    </div>
-                </div>
+            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE TOP RATED GEMS</div>
+            <div id="search-results" class="col s10 m8 offset-m2 offset-s1">
+                
             </div>
         </section>
 
@@ -199,7 +195,7 @@
             <div class="col s1 offset-s8"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
         </div>
         <div class="modal-content white-text">
-            <div id="watch-list-content">
+            <div id="watch-list-content" class="grid-wish">
                 <!-- Wish List Content Generated Here -->
             </div>
         </div>

@@ -80,7 +80,7 @@ function getStores() {
       });
 }
 
-function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
+function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title, AAA) {
   let searchDeals;
   let paramHandle = "?";
 
@@ -91,6 +91,7 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
   if(raiting == null) { raiting = steamRate; }
   if(raiting == '40') { raiting = ''; }
   if(title == null) { title = ''; }
+  if(AAA == null) { AAA = 0; }
 
   console.log("Stores:", stores)
   console.log("Range:", priceLow + " - " + priceHigh)
@@ -136,7 +137,7 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
 
   console.log('Getting Deals from:', searchDeals);
 
-  var jqxhr = $.get(searchDeals, function() {
+  var jqxhr = $.get(searchDeals + '&AAA=' + AAA, function() {
       console.log("getDeals:", "Success.")
     })
       .done(function(data) {
@@ -176,6 +177,7 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
       console.log("getDeals:", "Completed.")
     });
 }
+
 
 function getTitle(title) {
   let searchDeals = apiGame + '?title=' + title;
