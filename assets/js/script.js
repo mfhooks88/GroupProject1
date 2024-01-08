@@ -385,4 +385,7 @@ $(document).ready(function() {
       });
   // Materialize Modal Control
   $('.modal').modal();
+
+  // Materialize Tap Target Control
+  $('.tap-target').tapTarget();
 });

@@ -117,3 +117,8 @@ mark {
   grid-row-gap: .5rem;
   column-gap: 1rem;
 }
+
+.modal {
+  background: hsl(0 0% 100% / 0.3);
+  backdrop-filter: blur(10px);
+}
