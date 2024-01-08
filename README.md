@@ -1,4 +1,4 @@
-# GroupProject1
+# Quick$ave - Best Games. Better Prices.
 Game deals site developed utilizing API calls to return deals for customers.
 
 ## Description
