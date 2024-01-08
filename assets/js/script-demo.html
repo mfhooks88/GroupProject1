@@ -6,14 +6,14 @@
     <title>Demo Scripting Site -- Not Used in Project Live</title>
 
     <style>
-        .grid {
+        .grid-stores {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(auto-fill, auto);
             grid-row-gap: .5em;
         }
 
-        .grid-button {
+        .grid-stores-button {
             grid-column: 1 / 4;
         }
 
@@ -26,9 +26,9 @@
 
 <body style="display: flex; flex-direction: row; justify-content: space-evenly;">
     <section style="border: 1px solid black; padding: .5rem;">
-        <form id="store-select" name="store-select" class="grid">
+        <form id="store-select" name="store-select" class="grid-stores">
             <!-- Store Checkbox Generated Here -->
-            <button class="grid-button">Check Deals</button>
+            <button class="grid-stores-button">Check Deals</button>
         </form>
     </section>
 
