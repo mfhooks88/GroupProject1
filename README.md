@@ -29,6 +29,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## Demo
 [Site Demo](https://kalleepar.github.io/GroupProject1/home.html)
 
+### Presentation
+[Click$ave Pitch](./assets/Click$ave - Presentation.pdf)
+
 ### Screenshot
 
 ![Alt text](https://github.com/kalleepar/GroupProject1/blob/ba34d9941c0c396c91f184e1fff734a48b82ef1c/assets/pictures/quicksavesample1.jpg)
