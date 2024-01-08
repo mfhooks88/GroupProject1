@@ -1,4 +1,4 @@
-nav {
+nav, footer {
   background-color: #0b0832;
 }
 
@@ -7,6 +7,11 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: rgb(18, 18, 18);
+  font-family: 'Roboto', monospace;
+}
+
+nav li:hover {
+  background-color: #4527a0;
 }
 
 main {
@@ -15,16 +20,110 @@ main {
 
 main.contact {
   background-image: url(../pictures/Wallpaper-1.png);
-  background-size: cover;
+  background-size: contain;
 }
 
-main div.container {
+main div form.contact{
   border: solid;
   border-radius: 30px;
-  padding: 0px 0px 50px 0px;
-  background-color: white;
+  color: white;
+  background-image: url(../pictures/Wallpaper-1.png);
 }
 
 img:hover {
   opacity: 0.75;
+}
+
+.brand-logo {
+  font-family: 'Bungee Spice', sans-serif;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+ul.sidenav {
+  background: hsl(0 0% 100% / 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Font Sizing */
+.text-sm { 
+  font-size: 75%;
+}
+
+.text-center { 
+  text-align: center;
+}
+
+.spacing {
+  padding-left: 1rem;
+}
+
+/* Specific styling for deals information */
+div[name="deal"] {
+  background-color: white;
+}
+
+div[name="deal"]:hover {
+  background-color: orange;
+}
+
+div[name="deal"]:hover a {
+  color: white !important;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: red
+}
+
+mark {
+  background-color: #311b92;
+  color: white;
+  font-weight: bold;
+  padding: 0 .3rem;
+}
+
+.modal-header {
+  font-size: 150%;
+}
+
+#watch-list-content p {
+  line-height: 1.5rem;
+  padding: 0;
+  margin: 0;
+ }
+
+/* Changes to Materialize Toast */
+#toast-container {
+  top: auto !important;
+  right: 8% !important;
+  bottom: 10%;
+}
+
+/* Custom Grid Layout */
+.grid-custom {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-row-gap: .5rem;
+}
+
+.grid-wish {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, auto);
+  grid-row-gap: .5rem;
+  column-gap: 1rem;
+}
+
+.modal {
+  background: hsl(0 0% 100% / 0.1);
+  backdrop-filter: blur(10px);
+}
+
+#login {
+  padding: .5rem .75rem;
+  border-radius: 2rem;
 }

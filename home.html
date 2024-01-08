@@ -7,154 +7,225 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>Welcome</title>
+    <title>Welcome to QuickSave!</title>
 </head>
 
-<body>
+<body onload="getPriceDeals('', '0', '50', '5', '90', '', 1)">
     <header>
         <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo left"><i class="material-icons">videogame_asset</i>Quick$ave™️</a>
-                <ul id="nav-mobile" class="right hide-on-small-only">
-                    <li class="active #ff80ab pink accent-3"><a href="./home.html">Home</a></li>
+            <div class="nav-wrapper spacing">
+                <a href="#!" class="brand-logo">🎮 Quick$ave™️</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="active deep-purple lighten-1"><a href="./home.html">Home</a></li>
                     <li><a href="./browse.html">Browse</a></li>
-                    <li><a href="./search.html">Search</a></li>
+                    <li><a href="#watch-list" class="modal-trigger" onclick="createWishList()">Wish List</a></li>
                     <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="#login" class="modal-trigger"><i class="material-icons">person_add</i></a></li>
                 </ul>
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="./home.html">Home</a></li>
-            <li><a href="./browse.html">Browse</a></li>
-            <li><a href="./search.html">Search</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
+            <li><a href="./browse.html" class="white-text">Browse</a></li>
+            <li><a href="#watch-list" class="white-text modal-trigger" onclick="createWishList()">Wish List</a></li>
+            <li><a href="./contact.html"  class="white-text">Contact Us</a></li>
         </ul>
     </header>
-    <br>
-    <br>
+
+    <nav>
+        <div class="nav-wrapper deep-purple darken-3">
+            <form class="row" id="title-search">
+                <div class="input-field col s8 offset-s2">
+                    <input id="search" type="search" required placeholder="Find your next adventure...">
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </form>
+        </div>
+    </nav>
 
     <main>
+        <div class="container">
+            <div class="row offset-s2 transparent">
+                <h1 class="white-text ">
+                    <blockquote class="flow-text">"Best Games, Better Price!"</blockquote>
+                </h1>
+            </div>
+        </div>
+
         <section class="row">
+            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE FEATURED STORES</div>
             <div class="col s5 m2 offset-m2 offset-s1">
                 <div class="card">
                     <div class="card-image">
-                        <a href="./browse.html"><img
-                                src="assets/pictures/alanwake2.avif"></a>
+                        <a href="./search.html?store=27"><img
+                                src="assets/pictures/gamesplanet2.webp"></a>
                     </div>
                 </div>
             </div>
             <div class="col s5 m2">
                 <div class="card">
                     <div class="card-image">
-                        <a href="./browse.html"><img
-                                src="assets/pictures/zelda.jpeg"></a>
+                        <a href="./search.html?store=1"><img
+                                src="assets/pictures/Steam_icon_logo.jpeg"></a>
                     </div>
                 </div>
             </div>
             <div class="col s5 m2 offset-s1">
                 <div class="card">
                     <div class="card-image">
-                        <a href="./browse.html"><img
-                                src="assets/pictures/jedisurvivor.webp"></a>
+                        <a href="./search.html?store=25"><img
+                                src="assets/pictures/Epic-Games-Emblem.png"></a>
                     </div>
                 </div>
             </div>
             <div class="col s5 m2">
                 <div class="card">
                     <div class="card-image">
-                        <a href="./browse.html"><img
-                                src="assets/pictures/re4title.webp"></a>
+                        <a href="./search.html?store=15"><img
+                                src="assets/pictures/fanatical.jpeg"></a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="row">
-            <div class="col s10 m8 offset-m2 offset-s1">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="assets/pictures/bg3.jpeg">
-                    </div>
-                </div>
+            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE TOP RATED GEMS</div>
+            <div id="search-results" class="col s10 m8 offset-m2 offset-s1">
+                
             </div>
         </section>
 
         <section class="row">
+            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE BY CATEGORY</div>
             <div class="col s5 m2 offset-m2 offset-s1">
                 <div class="card">
                     <div class="card-image">
-                        <a href="https://store.steampowered.com/"><img src="assets/pictures/gamesplanet2.webp"></a>
+                        <a href="./browse.html"><img src="assets/pictures/alanwake2.avif"></a>
                     </div>
                 </div>
             </div>
             <div class="col s5 m2">
                 <div class="card">
                     <div class="card-image">
-                        <a href="https://store.epicgames.com/en-US/"><img src="assets/pictures/Steam_icon_logo.jpeg"></a>
+                        <a href="./browse.html"><img src="assets/pictures/zelda.jpeg"></a>
                     </div>
                 </div>
             </div>
             <div class="col s5 m2 offset-s1">
                 <div class="card">
                     <div class="card-image">
-                        <a href="https://us.gamesplanet.com/"><img src="assets/pictures/Epic-Games-Emblem.png"></a>
+                        <a href="./browse.html"><img src="assets/pictures/jedisurvivor.webp"></a>
                     </div>
                 </div>
             </div>
             <div class="col s5 m2">
                 <div class="card">
                     <div class="card-image">
-                        <a href="https://www.fanatical.com/en/"><img src="assets/pictures/fanatical.jpeg"></a>
+                        <a href="./browse.html"><img src="assets/pictures/re4title.webp"></a>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="row">
+            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE BY YEAR</div>
+
             <div class="col s10 m4 offset-m2 offset-s1">
                 <div class="card">
                     <div class="card-image">
-                        <a href="./search.html"><img
-                                src="assets/pictures/goty-2023-3244454.webp"></a>
+                        <a href="./search.html"><img src="./assets/pictures/maxresdefault.jpeg"></a>
                     </div>
                 </div>
             </div>
             <div class="col s10 m4 offset-s1">
                 <div class="card">
                     <div class="card-image">
-                        <a href="#"><img src="assets/pictures/Game-release-dates-2024.jpg"></a>
+                        <a href="#"><img src="assets/pictures/2024-Gamest-jpg.webp"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="col m10 s10 offset-m2 offset-s1 white-text">BROWSE BY HIGHEST RATED</div>
+            <div class="col s10 m8 offset-m2 offset-s1">
+                <div class="card">
+                    <div class="card-image">
+                        <a href="./search.html"><img src="./assets/pictures/maxresdefault (1).jpg"></a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="page-footer black">
+    <footer class="page-footer deep-purple darken-5">
         <div class="container">
             <div class="row">
                 <div>
                     <ul>
-                        <li><a class="grey-text text-lighten-3 col m3 offset-m1"
-                                href="./home.html">Home</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3"
-                                href="./browse.html">Browse</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3"
-                                href="./search.html">Search</a></li>
-                        <li><a class="grey-text text-lighten-3"
-                                href="./contact.html">Contact Us</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./home.html">Home</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./browse.html">Browse</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1 modal-trigger" href="#watch-list" onclick="createWishList()">Wish List</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./contact.html">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="footer-copyright hide-on-med-and-down deep-purple darken-4 text-sm">
+            <div class="container white-text text-center">
+                <span>© 2024 QuickSave Multimedia Ltd. All rights reserved. All trademarks are property of their respective owners in the US and other countries.</span>
+                <br />
+                <span>Terms and Conditions | Privacy Policy | Cookie Policy | Legal | Subscriber Agreement | Refunds | Careers</span>
+            </div>
+        </div>
     </footer>
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-</body>
+    <!-- Modal Structure -->
+    <div id="watch-list" class="modal bottom-sheet deep-purple darken-4">
+        <div class="modal-footer deep-purple valign-wrapper row white-text">
+            <div class="col s4 modal-header left-align"><span>Wish List</span></div>
+            <div class="col s1 offset-s8"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
+        </div>
+        <div class="modal-content white-text">
+            <div id="watch-list-content" class="grid-wish">
+                <!-- Wish List Content Generated Here -->
+            </div>
+        </div>
+    </div>
 
+    <!-- User Login Modal -->
+    <div id="login" class="modal white-text" style="overflow: hidden;">
+        <div class="row">
+            <div id="random-user-heading" class="col s11 modal-header left-align"></div>
+            <div class="col s1"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
+        </div>
+
+        <div class="modal-content">
+            <!-- User Content -->
+            <div id="random-user" class="row">
+            <div id="random-user-image" class="col s3"></div>
+            <div id="random-user-info" class="col s9"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Custom JS files written for Project -->
+    <script src="./assets/js/read_write-localstorage.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/randomuser.js"></script>
+</body>
 </html>

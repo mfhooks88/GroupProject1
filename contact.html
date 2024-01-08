@@ -7,6 +7,11 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Contact Us</title>
 </head>
@@ -14,23 +19,23 @@
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper">
-                <a href="#!" class="brand-logo left"><i class="material-icons">videogame_asset</i>Quick$ave™️</a>
-                <ul id="nav-mobile" class="right hide-on-small-only">
-                    <li><a href="./home.html">Home</a></li>
+            <div class="nav-wrapper spacing">
+                <a href="#!" class="brand-logo">🎮 Quick$ave™️</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="active #ff80ab"><a href="./home.html">Home</a></li>
                     <li><a href="./browse.html">Browse</a></li>
-                    <li><a href="./search.html">Search</a></li>
-                    <li class="active #ff80ab pink accent-3"><a
-                            href="./contact.html">Contact Us</a></li>
+                    <li><a href="#watch-list" class="modal-trigger" onclick="createWishList()">Wish List</a></li>
+                    <li><a href="./contact.html" class="deep-purple lighten-1">Contact Us</a></li>
+                    <li><a href="#login" class="modal-trigger"><i class="material-icons">person_add</i></a></li>
                 </ul>
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="./home.html">Home</a></li>
-            <li><a href="./browse.html">Browse</a></li>
-            <li><a href="./search.html">Search</a></li>
-            <li><a href="./contact.html">Contact Us</a></li>
+            <li><a href="./browse.html" class="white-text">Browse</a></li>
+            <li><a href="#watch-list" class="white-text modal-trigger" onclick="createWishList()">Wish List</a></li>
+            <li><a href="./contact.html"  class="white-text">Contact Us</a></li>
         </ul>
     </header>
 
@@ -39,46 +44,110 @@
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <div class="container bg-img">
-            <form action="/action_page.php" class="container">
-                <h1>Contact Us</h1>
 
-                <label for="email"><b>Name</b></label>
-                <input type="text" placeholder="Enter Name" name="name" required>
-
-                <label for="psw"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required>
-
-                <button type="submit" class="btn">Send</button>
+        <div class="row">
+            <form class="col m6 s6 offset-m3 offset-s3 contact">
+                <div class="row contact-us">
+                    <div class="input-field col m10 s10 offset-m1 offset-s1">
+                        <h2>Contact Us</h2>
+                    </div>
+                    <div class="input-field col m10 s10 offset-m1 offset-s1">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix" type="text" class="validate white-text">
+                        <label for="icon_prefix">Full Name</label>
+                    </div>
+                    <div class="input-field col m10 s10 offset-s1 offset-m1">
+                        <i class="material-icons prefix">phone</i>
+                        <input id="icon_prefix" type="tel" class="validate white-text">
+                        <label for="icon_prefix">Phone Number</label>
+                    </div>
+                    <div class="input-field col m10 s10 offset-s1 offset-m1">
+                        <i class="material-icons prefix">email</i>
+                        <input id="icon_prefix" type="text" class="validate white-text">
+                        <label for="icon_prefix">Email</label>
+                    </div>
+                    <div class="input-field col m10 s10 offset-s1 offset-m1">
+                        <i class="material-icons prefix">message</i>
+                        <input id="icon_prefix" type="text" class="validate white-text">
+                        <label for="icon_prefix">Message</label>
+                    </div>
+                    <div class="input-field col m10 s10 offset-s1 offset-m1">
+                        <button type="submit" class="btn">Send</button>
+                    </div>
+                </div>
             </form>
         </div>
+        <br>
+        <br>
+        <br>
     </main>
 
-    <footer class="page-footer black">
+
+    <footer class="page-footer deep-purple darken-5">
         <div class="container">
             <div class="row">
                 <div>
                     <ul>
-                        <li><a class="grey-text text-lighten-3 col m3 offset-m1"
-                                href="./home.html">Home</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3"
-                                href="./browse.html">Browse</a></li>
-                        <li><a class="grey-text text-lighten-3 col m3"
-                                href="./search.html">Search</a></li>
-                        <li><a class="grey-text text-lighten-3"
-                                href="./contact.html">Contact Us</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./home.html">Home</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./browse.html">Browse</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1 modal-trigger" href="#watch-list"
+                                onclick="createWishList()">Wish List</a></li>
+                        <li><a class="grey-text text-lighten-3 col m2 offset-m1" href="./contact.html">Contact Us</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="footer-copyright hide-on-med-and-down deep-purple darken-4 text-sm">
+            <div class="container white-text text-center">
+                <span>© 2024 QuickSave Multimedia Ltd. All rights reserved. All trademarks are property of their
+                    respective owners in the US and other countries.</span>
+                <br />
+                <span>Terms and Conditions | Privacy Policy | Cookie Policy | Legal | Subscriber Agreement | Refunds |
+                    Careers</span>
+            </div>
+        </div>
     </footer>
 
+    <!-- Modal Structure -->
+    <div id="watch-list" class="modal bottom-sheet deep-purple darken-4">
+        <div class="modal-footer deep-purple valign-wrapper row white-text">
+            <div class="col s4 modal-header left-align"><span>Wish List</span></div>
+            <div class="col s1 offset-s8"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
+        </div>
+        <div class="modal-content white-text">
+            <div id="watch-list-content" class="grid-wish">
+                <!-- Wish List Content Generated Here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- User Login Modal -->
+    <div id="login" class="modal white-text" style="overflow: hidden;">
+        <div class="row">
+            <div id="random-user-heading" class="col s11 modal-header left-align"></div>
+            <div class="col s1"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
+        </div>
+
+        <div class="modal-content">
+            <!-- User Content -->
+            <div id="random-user" class="row">
+            <div id="random-user-image" class="col s3"></div>
+            <div id="random-user-info" class="col s8 offset-s1"></div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>   
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <!-- Custom JS files written for Project -->
+    <script src="./assets/js/read_write-localstorage.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/randomuser.js"></script>
 </body>
 
 </html>
