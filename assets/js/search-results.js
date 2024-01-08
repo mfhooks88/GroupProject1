@@ -6,17 +6,26 @@ $(function(){
 
 });
 
+
 function getSearchResults() {
     let userSearch = document.location.search;
     console.log("Title:", userSearch);
 
     let userTitle = userSearch.split('=')[1];
     console.log("Title:", userTitle);
+
+    let apiLookup = apiDeal + "?title=" + userTitle + "&pageSize=30";
+
+    if(userSearch.includes('store')) { 
+        apiLookup = apiDeal + "?storeID=" + userTitle + "&pageSize=30";
+    }
     
     resultsArea.html('');
     resultsArea.append('<p>You searched for: ' + userTitle + '</p>');
 
-    var jqxhr = $.get(apiDeal + "?title=" + userTitle + "&pageSize=30", function() {
+    console.log(apiLookup)
+
+    var jqxhr = $.get(apiLookup, function() {
         console.log("Title:", "Success.")
       })
         .done(function(data) {
