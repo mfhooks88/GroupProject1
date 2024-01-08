@@ -30,7 +30,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 [Site Demo](https://kalleepar.github.io/GroupProject1/home.html)
 
 ### Presentation
-[Click$ave Pitch](./assets/Click$ave - Presentation.pdf)
+[Pitch Deck](https://kalleepar.github.io/GroupProject1/assets/Click$ave%20-%20Presentation.pdf)
 
 ### Screenshot
 
