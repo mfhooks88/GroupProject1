@@ -40,7 +40,7 @@
 
     <nav>
         <div class="nav-wrapper deep-purple darken-3">
-            <form class="row">
+            <form class="row" id="title-search">
                 <div class="input-field col s8 offset-s2">
                     <input id="search" type="search" required placeholder="Find your next adventure...">
                     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -52,7 +52,10 @@
 
     <main>
         <section class="container">
-            <div class="white-text">Testing</div>
+            <div id="title-results" class="white-text">
+                <!-- Title results generated here -->
+
+            </div>
         </section>
     </main>
 
@@ -100,5 +103,6 @@
     <!-- Custom JS files written for Project -->
     <script src="./assets/js/read_write-localstorage.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/search-results.js"></script>
 </body>
 </html>

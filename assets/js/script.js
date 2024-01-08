@@ -92,6 +92,7 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
   if(priceHigh == null) { priceHigh = priceMax; }
   if(limit == null) { limit = resultLimit; }
   if(raiting == null) { raiting = steamRate; }
+  if(raiting == '40') { raiting = ''}
 
 
   console.log("Stores:", stores)
@@ -289,11 +290,6 @@ function handlePriceRangeForm(event) {
   getPriceDeals(strStores, priceMin, priceMax, '30', steamRate);
 }
 
-function handleTitleSearch(event) {
-  //Handle title search
-
-}
-
 function createWishList() {
   const watchListTxt = readLocalStorage(watchKey);
 
@@ -305,15 +301,19 @@ function createWishList() {
 function handleGameSearch(event) {
   //Prevents page from refreshing
   event.preventDefault();
+  console.log(event);
   var searchTerm = event.currentTarget[0].value;
 
   if (searchTerm) {
       //If searchTerm is not null/blank, here is what we do.
       console.log('handleGameSearch:', searchTerm)
-
-      //goGameResults(searchTerm);
+      const searchURL = './search.html?title=' + searchTerm;
+      
+      //redirect to search page
+      $(location).attr('href', searchURL);
 
   } else { console.log('handleGameSearch:', 'Search Term was null'); }
+
 }
 
 function handleCheck(checkbox){
@@ -342,8 +342,7 @@ function handleCheck(checkbox){
 
 //Page Load function/wait
 $(document).ready(function() {
-    //Calls getStores on load for testing display of stores
-    //getStores();
+    //Calls slider creation functions, sets event listeners
     makeSlider();
     makeRatingSlider();
 
@@ -351,18 +350,14 @@ $(document).ready(function() {
     priceForm.submit(handlePriceRangeForm);
     gameSearch.submit(handleGameSearch);
 
-  //Materialize Sidenav Navigation
+  //Materialize Sidenav Navigation Contro/Listen
   $('.sidenav').sidenav();
 
-  //Checkbox Change Form - call aPI if changing checkbox
-  //$("input[type='checkbox']").on("click", handlePriceRangeForm);
-
-
-  //Modal Information
+  //Materialize Modal Information
       document.addEventListener('DOMContentLoaded', function() {
           var elems = document.querySelectorAll('.modal');
           var instances = M.Modal.init(elems, options);
       });
-  // Modal Control
+  // Materialize Modal Control
   $('.modal').modal();
 });
