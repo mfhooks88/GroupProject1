@@ -13,6 +13,8 @@
         const priceDisplayMax = $('#price-max');
         const raitingDisplay = $('#raiting');
         const priceForm = $('#filter-results');
+        const gameSearch = $('#title-search');
+        const storeSelector = $('input:checkbox');
 
     // Default variables needed in fetch
     const baseURL = 'https://www.cheapshark.com'
@@ -53,12 +55,11 @@ function getStores() {
                 // storeList.append('<p><a name="store" href="' + apiDeal + "?storeID=" + storeID + '">' +
                 // storeName + '</a>' + '<img name="image" src="' + baseURL + storeImage.banner + '"></p>');
                 
-                let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" class="filled-in" />'
+                let checkBox = '<input type="checkbox" name="store" id="' + storeID + '" value="' + storeID + '" class="filled-in" onClick="handleCheck(this)" />'
                 let label = '<label " for="' + storeID + '">' + checkBox + '<span>' + storeName + '</span></label>'
 
                 if(storeActive == 1) { // if active is 1 (true), set class to active for styling
                   storeGroup.append('<div name="form-group">' + label + "</div>");
-                    console.log("Active:", storeActive);
                 }
                 
             }
@@ -150,8 +151,9 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
               let gameMetacritic = data[key].metacriticScore;
               let gameSteamRating = data[key].steamRatingPercent;
               let gameSteamRatingText = data[key].steamRatingText;
-              
-              storeDeals.append('<div name="deal" class="row valign-wrapper"><a class="col s10 deep-purple-text text-darken-4" href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' ' + saleInfo + '</a>' + saveWatch + '</div>');
+              let storeIcon = baseURL + '/img/stores/icons/' + (data[key].storeID - 1) + '.png';
+
+              storeDeals.append('<div name="deal" class="row valign-wrapper"><img src="' + storeIcon + '" style="padding-left: .3rem;"><a class="col s10 deep-purple-text text-darken-4" href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' ' + saleInfo + '</a>' + saveWatch + '</div>');
           }
         
       })
@@ -271,7 +273,7 @@ function makeRatingSlider() {
 
 function handlePriceRangeForm(event) {
   event.preventDefault();
-  console.log("Submitted Form.")
+  console.log("Browse Form:", "Handling.")
 
   var values = [];
   $("#store-group :input").each(function() {
@@ -282,7 +284,7 @@ function handlePriceRangeForm(event) {
   });
 
   let strStores = values.toString();
-  if(strStores == '') { console.log("nothing selected"); }
+  if(strStores == '') { console.log("Browse Form:", "Store restriction not set."); }
 
   getPriceDeals(strStores, priceMin, priceMax, '30', steamRate);
 }
@@ -300,6 +302,44 @@ function createWishList() {
       $('#watch-list-content').append("<p>" + element.id + " - " + element.title + " - " + element.sale + "</p>"); });
 }
 
+function handleGameSearch(event) {
+  //Prevents page from refreshing
+  event.preventDefault();
+  var searchTerm = event.currentTarget[0].value;
+
+  if (searchTerm) {
+      //If searchTerm is not null/blank, here is what we do.
+      console.log('handleGameSearch:', searchTerm)
+
+      //goGameResults(searchTerm);
+
+  } else { console.log('handleGameSearch:', 'Search Term was null'); }
+}
+
+function handleCheck(checkbox){
+  console.log("Checkbox:", "Handling.")
+
+  var values = [];
+  $("#store-group :input").each(function() {
+    //Disable form checkbox
+    $(this).prop("disabled", true);
+     if($(this).is(":checked")) {
+      values.push($(this).val());
+     }
+  });
+
+  let strStores = values.toString();
+  if(strStores == '') { console.log("Browse Form:", "Store restriction not set."); }
+
+  getPriceDeals(strStores, priceMin, priceMax, '30', steamRate);
+
+  //Re-enable form checkbox
+  $("#store-group :input").each(function() {
+    $(this).prop("disabled", false);
+  });
+  
+}
+
 //Page Load function/wait
 $(document).ready(function() {
     //Calls getStores on load for testing display of stores
@@ -309,13 +349,15 @@ $(document).ready(function() {
 
     storeForm.submit(handleFormDeals);
     priceForm.submit(handlePriceRangeForm);
-  
+    gameSearch.submit(handleGameSearch);
+
   //Materialize Sidenav Navigation
   $('.sidenav').sidenav();
 
   //Checkbox Change Form - call aPI if changing checkbox
-  $("input[name='store']").on("change", handlePriceRangeForm);
-  
+  //$("input[type='checkbox']").on("click", handlePriceRangeForm);
+
+
   //Modal Information
       document.addEventListener('DOMContentLoaded', function() {
           var elems = document.querySelectorAll('.modal');
