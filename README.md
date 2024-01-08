@@ -11,6 +11,11 @@ Uitilize git clone to copy down project locally.
 git clone git@github.com:kalleepar/GroupProject1.git
 ```
 
+![Alt text](https://github.com/kalleepar/GroupProject1/blob/ba34d9941c0c396c91f184e1fff734a48b82ef1c/assets/pictures/quicksavesample1.jpg)
+![Alt text](https://github.com/kalleepar/GroupProject1/blob/ba34d9941c0c396c91f184e1fff734a48b82ef1c/assets/pictures/quicksavesample2.jpg)
+![Alt text](https://github.com/kalleepar/GroupProject1/blob/ba34d9941c0c396c91f184e1fff734a48b82ef1c/assets/pictures/quicksavesample3.jpg)
+![Alt text](https://github.com/kalleepar/GroupProject1/blob/ba34d9941c0c396c91f184e1fff734a48b82ef1c/assets/pictures/quicksavesample4.jpg)
+
 ## Contributors
 * Jared Elliott
 * Michael Hooks
