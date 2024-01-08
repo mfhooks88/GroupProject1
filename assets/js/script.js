@@ -149,13 +149,13 @@ function getPriceDeals(stores, priceLow, priceHigh, limit, raiting, title) {
               let normalPrice = '<span class="strike">' + data[key].normalPrice + '</span>';
               let btnPrice = 'data-price="'  + data[key].normalPrice + '" data-sale="' + data[key].salePrice + '"';
               let saleInfo = salePrice + '<sup> ' + normalPrice + '</sup>';
-              let btnInfo = 'data-gameID="' + data[key].gameID + '" data-gameTitle="' + data[key].title + '"';
+              let storeIcon = baseURL + '/img/stores/icons/' + (data[key].storeID - 1) + '.png';
+              let btnInfo = 'data-gameID="' + data[key].gameID + '" data-gameTitle="' + data[key].title + '" data-store="' + storeIcon + '" data-deal="' + data[key].dealID + '"';
               let saveWatch = '<button class="btn col s2 deep-purple accent-3 flow-text" name="watch" id="game-' + data[key].gameID + '" ' + btnPrice + " " + btnInfo + '>+ Wish</button>';
               let gameMetacritic = data[key].metacriticScore;
               let gameSteamRating = data[key].steamRatingPercent;
               let gameSteamRatingText = data[key].steamRatingText;
-              let storeIcon = baseURL + '/img/stores/icons/' + (data[key].storeID - 1) + '.png';
-
+              
               storeDeals.append('<div name="deal" class="row valign-wrapper"><img src="' + storeIcon + '" style="padding-left: .3rem;"><a class="col s10 deep-purple-text text-darken-4" href="' + urlDirect + data[key].dealID + '" target="_blank">' + data[key].title + ' ' + saleInfo + '</a>' + saveWatch + '</div>');
           }
         
@@ -221,7 +221,9 @@ function handleWatch(event) {
         id: event.target.getAttribute("data-gameID"),
         title: event.target.getAttribute("data-gameTitle"),
         sale: event.target.getAttribute("data-sale"),
-        price: event.target.getAttribute("data-price")
+        price: event.target.getAttribute("data-price"),
+        store: event.target.getAttribute("data-store"),
+        deal: event.target.getAttribute("data-deal")
     }
 
     //Write to local storage
@@ -299,7 +301,7 @@ function createWishList() {
 
   $('#watch-list-content').empty();
   watchListTxt.forEach(element => {
-      $('#watch-list-content').append('<div><span>' + element.title + '</span> <mark>' + element.sale + '</mark></div>'); });
+      $('#watch-list-content').append('<div class="valign-wrapper"><img src="' + element.store + '" style="padding: 0rem .3rem;"> <a href="' + urlDirect + element.deal + '" target="_blank" class="orange-text text-darken-2">' + element.title + '</a>&nbsp-&nbspCurrent: <mark>$' + element.sale + '</mark></div>'); });
 }
 
 function handleGameSearch(event) {

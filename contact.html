@@ -113,29 +113,30 @@
     <div id="watch-list" class="modal bottom-sheet deep-purple darken-4">
         <div class="modal-footer deep-purple valign-wrapper row white-text">
             <div class="col s4 modal-header left-align"><span>Wish List</span></div>
-            <div class="col s1 offset-s8"><a href="#!" class="modal-close btn-flat white-text"><i
-                        class="material-icons">close</i></a></div>
+            <div class="col s1 offset-s8"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
         </div>
         <div class="modal-content white-text">
-            <div id="watch-list-content">
+            <div id="watch-list-content" class="grid-wish">
                 <!-- Wish List Content Generated Here -->
             </div>
         </div>
     </div>
 
-    <div id="login" class="modal white-text">
+    <!-- User Login Modal -->
+    <div id="login" class="modal white-text" style="overflow: hidden;">
+        <div class="row">
+            <div id="random-user-heading" class="col s11 modal-header left-align"></div>
+            <div class="col s1"><a href="#!" class="modal-close btn-flat white-text"><i class="material-icons">close</i></a></div>
+        </div>
+
         <div class="modal-content">
-          <!-- User Content -->
-          <h4 id="random-user-heading"></h4>
-          <div id="random-user" class="row">
+            <!-- User Content -->
+            <div id="random-user" class="row">
             <div id="random-user-image" class="col s3"></div>
             <div id="random-user-info" class="col s9"></div>
-          </div>
+            </div>
         </div>
-        <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-      </div>
+    </div>
 
 
     <!-- Compiled and minified JavaScript -->
